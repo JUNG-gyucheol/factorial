@@ -1,19 +1,39 @@
-function factorial(n) {
-  if (n === 1) {
-    return 1;
-  }
+// const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
 
-  return n * factorial(n - 1);
-}
+// function factorial(n) {
+//   if (n === 1) {
+//     return 1;
+//   }
 
-console.log(BigInt(factorial(100)));
+//   return n * factorial(n - 1);
+// }
+
+// console.log(factorial(60));
 
 function factorial2(n) {
-  let i,
-    result = BigInt(1);
-  for (i = BigInt(2); i <= n; i++) {
-    result *= i;
+  let arr = [];
+  let i, j, r, cnt;
+  let result = 1;
+  let idx = 0;
+  arr[0] = 1;
+  r = 0;
+  cnt = 1;
+  for (i = 2; i <= n; i++) {
+    j = 0;
+    for (r = 0; j < cnt; j++) {
+      console.log(cnt);
+      console.log(arr[j] + "*" + i + "+" + r + "=" + (arr[j] * i + r));
+      r += arr[j] * i;
+      arr[j] = r % 10;
+      r = parseInt(r / 10);
+    }
+    while (r) {
+      arr[cnt++] = r % 10;
+      r = parseInt(r / 10);
+    }
   }
-  return result;
+  for (i = cnt - 1; i >= 0; i--) {
+    console.log(arr[i]);
+  }
 }
-console.log(factorial2(100));
+factorial2(5);
