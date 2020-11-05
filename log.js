@@ -13,8 +13,6 @@
 function factorial2(n) {
   let arr = [];
   let i, j, r, cnt;
-  let result = 1;
-  let idx = 0;
   arr[0] = 1;
   r = 0;
   cnt = 1;
@@ -32,8 +30,6 @@ function factorial2(n) {
       r = parseInt(r / 10);
     }
   }
-  for (i = cnt - 1; i >= 0; i--) {
-    console.log(arr[i]);
-  }
+  console.log(arr.reverse().join(""));
 }
-factorial2(5);
+factorial2(20);
